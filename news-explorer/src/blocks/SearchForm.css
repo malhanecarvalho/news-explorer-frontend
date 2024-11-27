@@ -1,0 +1,71 @@
+.search{
+    max-width: 1440px;
+    height: 576px;
+    background-image: url('../images/georgia-de-lotz-unsplash.png');
+    margin: 0 auto;
+}
+
+.search__container{
+    max-width: 702px;
+    position: absolute;
+    top: 110px;
+    left: 416px;
+}
+
+.search_title{
+    max-width: 702px;
+    font-family: roboto-slab;
+    font-weight: 400;
+    font-size: 60px;
+    line-height: 64px;
+    color: #fff;
+}
+
+.search__subheading{
+    max-width: 608px;
+    font-family: roboto;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color: #fff;
+    padding-bottom: 50px;
+}
+
+.search__form{
+    display: flex;
+    justify-content: flex-end;
+    column-gap: 258px;
+    max-width: 608px;
+    border: 1px solid #d1d2d6;
+    border-radius: 100px;
+    background-color: #fff;
+}
+
+.search__input{
+    max-width: 376px;
+    font-family: roboto;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: #b6bcbf;
+    border: none;
+    border-radius: 100px;
+    padding-left: 10px;
+}
+
+.search__button{
+    max-width: 168px;
+    border-radius: 100px;
+    background-color: #2F71E5;
+    border: none;
+}
+
+.search__button_text{
+    font-family: roboto;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    color: #fff;
+    padding: 18px 40px;
+}
+

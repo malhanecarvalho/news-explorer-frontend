@@ -1,0 +1,11 @@
+.header{
+    max-width:1440px;
+    max-height: 80px;
+    position: absolute;
+}
+
+.header__line{
+    max-width:1440px;
+    max-height: 80px;
+}
+

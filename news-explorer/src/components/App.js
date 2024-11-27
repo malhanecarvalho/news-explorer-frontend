@@ -1,24 +1,25 @@
-import background from '../images/georgia-de-lotz-unsplash.png';
+import React,{useState} from 'react';
+import {Switch, Route, withRouter } from 'react-router-dom';
+import Header from "./Header";
+import SearchForm from "./SearchForm"
+
 
 function App() {
+const [loggedIn, setLoggedIn] = useState(false);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={background} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Switch>
+        <Route exact path="/">     
+        <SearchForm/>
+        </Route>
+        <Route path="/saved-news">
+        <Header/>
+        </Route>
+      </Switch>
+       
     </div>
   );
 }
 
-export default App;
+export default withRouter(App);
