@@ -1,0 +1,44 @@
+.about{
+    max-width: 1440px;
+    max-height: 624px;
+    height: 624px;
+    background-color: #fff;
+    margin: 0 auto;
+}
+
+.about__container{
+    max-width: 1440px;
+    max-height: 624px;
+    height: 480px;
+    display: flex;
+    justify-content: center;
+    column-gap: 50px;
+    padding-top: 70px;
+}
+
+.about__image{
+    max-width: 464px;
+    max-height: 464px;
+    border-radius: 1000px;
+}
+
+.about__description{
+    max-width: 600px;
+    padding-top: 10px;
+}
+
+.about__title{
+    font-family: roboto-slab;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 46px;
+    color: #1a1b22;
+}
+
+.about__subheading{
+    font-family: roboto;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    color: #1a1b22;
+}
