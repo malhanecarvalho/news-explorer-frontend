@@ -3,7 +3,8 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import Header from "./Header";
 import Main from './Main';
 import Footer from './Footer';
-
+import SavedNewsHeader from './SavedNewsHeader';
+import NewsCardList from "./NewsCardList";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -17,6 +18,9 @@ function App() {
         </Route>
         <Route path="/saved-news">
           <Header />
+          <SavedNewsHeader />
+          <NewsCardList/>
+          <Footer/>
         </Route>
       </Switch>
 
