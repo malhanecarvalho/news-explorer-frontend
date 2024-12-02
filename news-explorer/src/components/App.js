@@ -1,24 +1,25 @@
-import React,{useState} from 'react';
-import {Switch, Route, withRouter } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import Header from "./Header";
-import SearchForm from "./SearchForm";
 import Main from './Main';
+import Footer from './Footer';
 
 
 function App() {
-const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   return (
-    <div className="App">
+    <div className="page">
       <Switch>
-        <Route exact path="/">     
-        <Main/>
+        <Route exact path="/">
+          <Main />
+          <Footer />
         </Route>
         <Route path="/saved-news">
-        <Header/>
+          <Header />
         </Route>
       </Switch>
-       
+
     </div>
   );
 }

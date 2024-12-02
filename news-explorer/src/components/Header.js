@@ -4,7 +4,7 @@ import Navigation from "./Navigation";
 function Header() {
     return(
     <header className="header">
-    <img className="header__line" src={line} alt="Imagem linha horizontal"/>
+    {/*<img className="header__line" src={line} alt="Imagem linha horizontal"/>*/}
     <Navigation/>
     </header>   
 )}

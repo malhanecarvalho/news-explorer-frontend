@@ -1,4 +1,4 @@
-body{
-    min-width: 544px;
+.page{
+    max-width: 1440px;
     margin: 0 auto;
 }

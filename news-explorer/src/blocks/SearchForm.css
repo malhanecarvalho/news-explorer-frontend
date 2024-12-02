@@ -1,20 +1,26 @@
 .search {
     max-width: 1440px;
-    height: 576px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     background-image: url('../images/georgia-de-lotz-unsplash.png');
+    background-repeat: no-repeat;
+    background-size: cover;
     margin: 0 auto;
 }
 
 .search__container {
     max-width: 702px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     margin: auto;
-    padding-top: 85px;
+    padding: 15px 0 80px;
 }
 
 .search__description {
     max-width: 702px;
+    width: 100%;
 }
 
 .search_title {
@@ -33,21 +39,22 @@
     font-size: 18px;
     line-height: 24px;
     color: #fff;
-    padding-bottom: 50px;
+    padding: 0 10px 55px;
 }
 
 .search__form {
+    max-width: 608px;
     display: flex;
     justify-content: flex-end;
-    column-gap: 258px;
-    max-width: 608px;
     border: 1px solid #d1d2d6;
     border-radius: 100px;
     background-color: #fff;
+    border: unset;
 }
 
 .search__input {
     max-width: 376px;
+    width: 100%;
     font-family: roboto;
     font-weight: 400;
     font-size: 16px;
@@ -55,11 +62,13 @@
     color: #b6bcbf;
     border: none;
     border-radius: 100px;
-    padding-left: 10px;
+    padding-left: 15px;
+    margin-right: auto;
 }
 
 .search__button {
     max-width: 168px;
+    width: 100%;
     border-radius: 100px;
     background-color: #2F71E5;
     border: none;

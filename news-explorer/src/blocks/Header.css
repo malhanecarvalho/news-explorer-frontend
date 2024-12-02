@@ -1,11 +1,9 @@
 .header{
     max-width:1440px;
-    max-height: 80px;
-    position: absolute;
+    width: 100%;
+    display: flex;
+    padding-top: 20px;
+    border-bottom: 1px solid #c4c4c4;
 }
 
-.header__line{
-    max-width:1440px;
-    max-height: 80px;
-}
 
