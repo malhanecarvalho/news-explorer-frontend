@@ -6,9 +6,9 @@ function NewsCard() {
         <ul className="card">
             <li className="card__container">
                 <div className="card__itens">
-                    <img className='card__image' src={cardImage} />
+                    <img className='card__image' src={cardImage} alt='Search-related background image' />
                     <button className='card__button'>
-                        <img className='card__bookmark' src={trashIcon} />
+                        <img className='card__bookmark' src={trashIcon} alt='Bookmark icon image' />
                     </button>
                 </div>
                 <div className="card__descriptions">

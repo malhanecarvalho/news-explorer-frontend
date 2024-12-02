@@ -9,6 +9,7 @@ import NewsCardList from "./NewsCardList";
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
 
+
   return (
     <div className="page">
       <Switch>
