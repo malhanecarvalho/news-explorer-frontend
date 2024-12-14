@@ -38,11 +38,38 @@
     background-color: #fff;
     border-radius: 8px;
     border: unset;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-.card__bookmark {
-    width: 24px;
-    height: 24px;
+.card__button_icon{
+    background-image: url(../images/bookmark_normal.png);
+}
+
+.card__button_icon:hover{
+    background-image: url(../images/bookmark_hover.png);
+}
+
+.card__span {
+    max-width: 182px;
+    position: absolute;
+    top: 20px;
+    right: 65px;
+    padding: 13px 18px;
+    border-radius: 10px;
+    font-family: Roboto;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14.06px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    background-color: #fff;
+    color: #000;
+}
+
+.card__button_saved {
+    background-image: url(../images/bookmark_active.png);
 }
 
 .card__descriptions {

@@ -1,6 +1,7 @@
 import SearchForm from "./SearchForm";
 import NewsCardList from "./NewsCardList";
 import About from "./About";
+import Popup from "./ModalWithForm";
 
 function Main() {
     return(
@@ -8,6 +9,7 @@ function Main() {
         <SearchForm/>
         <NewsCardList/>
         <About/>
+        <Popup/>
         </>
     )
 };

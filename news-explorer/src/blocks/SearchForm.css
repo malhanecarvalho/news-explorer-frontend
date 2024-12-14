@@ -59,11 +59,19 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 22px;
-    color: #b6bcbf;
+    color: #1a1b22;
     border: none;
     border-radius: 100px;
     padding-left: 15px;
     margin-right: auto;
+}
+
+.search__button:hover{
+    background-color: #347EFF;
+}
+
+.search__button:focus{
+    background-color: #2A65CC;
 }
 
 .search__button {

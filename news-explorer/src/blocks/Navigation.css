@@ -67,6 +67,9 @@
     border-radius: 100px;
     border: 1px solid #fff;
     background-color: unset;
+    display: flex;
+    column-gap: 15px;
+    align-items: center;
 }
 
 .navigation__button_loggedIn {

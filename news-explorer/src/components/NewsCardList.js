@@ -5,10 +5,14 @@ import Preloader from "./Preloader";
 function NewsCardList() {
     const [loading, setLoading] = useState(true);
 
-    // Simula o carregamento do conteúdo
+    const Submit = (evt) => {
+    console.log(evt.target)
+    console.log("cliquei")
+    }
+
     useEffect(() => {
       setTimeout(() => {
-        setLoading(false); // Após 3 segundos, simula o fim do carregamento
+        setLoading(false);
       }, 3000);
     }, []);
 
@@ -19,7 +23,7 @@ function NewsCardList() {
             <div className='card-list__cards'>
                 <NewsCard />
             </div>
-            <button type='submit' className='card-list__button card-list__button_text'>Mostrar mais</button>
+            <button onClick={Submit} className='card-list__button card-list__button_text'>Mostrar mais</button>
             </>}
         </section>
     )
