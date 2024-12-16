@@ -26,7 +26,7 @@ function NewsCard() {
                 <div className="card__itens">
                     <img className='card__image' src={cardImage} alt='Search-related background image' />
                     {isHovered && <span className='card__span'>Sign in to save articles</span>}
-                  {loggedIn ?  <button className={`card__button card__button_icon ${classSavedNews}`} onClick={handleSubmitSave}></button> : <button className='card__button card__button_icon' onMouseEnter={handleMouseEnter}
+                  {loggedIn ?  <button className={`card__button  ${classSavedNews}`} onClick={handleSubmitSave}></button> : <button className='card__button card__button_icon' onMouseEnter={handleMouseEnter}
                         onMouseLeave={handleMouseLeave}></button > 
                    }
 

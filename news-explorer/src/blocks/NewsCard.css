@@ -38,12 +38,9 @@
     background-color: #fff;
     border-radius: 8px;
     border: unset;
+    background-image: url(../images/bookmark_normal.png);
     background-position: center;
     background-repeat: no-repeat;
-}
-
-.card__button_icon{
-    background-image: url(../images/bookmark_normal.png);
 }
 
 .card__button_icon:hover{

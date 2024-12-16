@@ -3,7 +3,7 @@ export const CurrentUserContext = createContext();
 
 export const CurrentUserProvider = ({ children }) => {
 
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isPopupSignupOpen, setIsPopupSignupOpen] = useState(false);
   const [title, setTitle] = useState("Entrar");
