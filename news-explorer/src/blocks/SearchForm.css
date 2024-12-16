@@ -90,3 +90,7 @@
     color: #fff;
     padding: 18px 40px;
 }
+
+.error-message{
+    color: red;
+}

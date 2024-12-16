@@ -19,7 +19,7 @@ function Preloader(){
       <div className="preloader__spinner"></div>
       <p className="preloader__text">Procurando notícias...</p>
     </div>
-    <ResultNotFound/>
+   {/* <ResultNotFound/>*/}
     </>
   );
 };
