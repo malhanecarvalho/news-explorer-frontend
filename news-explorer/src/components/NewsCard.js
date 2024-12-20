@@ -1,143 +1,153 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-function NewsCard() {
-  const [isHovered, setIsHovered] = useState(false);
-  const { loggedIn, articles, displayCount } = useContext(CurrentUserContext);
-  const [saveNews, setSaveNews] = useState(false);
-  const classSavedNews = saveNews ? "card__button_saved" : "";
+function NewsCard(props) {
+  const {
+    loggedIn,
+    articles,
+    displayCount,
+    savedArticles,
+    query,
+    handleSave,
+    handleRemove,
+    iconSaved,
+    savedStatus,
+    isSavedNewsPage,
+    savedQuerys,
+  } = useContext(CurrentUserContext);
 
-  const handleMouseEnter = () => {
-    setIsHovered(true);
+  const [targetCard, setTargetCard] = useState({
+    articleUrl: null,
+    isHovered: false,
+  });
+
+  const handleMouseEnter = (article) => {
+    setTargetCard({
+      articleUrl: article.url,
+      isHovered: true,
+    });
   };
 
   const handleMouseLeave = () => {
-    setIsHovered(false);
+    setTargetCard({
+      articleUrl: null,
+      isHovered: false,
+    });
   };
 
-  const handleSubmitSave = () => {
-    setSaveNews(true);
+  const formatDate = (dateString) => {
+    const options = { day: "numeric", month: "long", year: "numeric" };
+
+    const date = new Date(dateString);
+    return date.toLocaleDateString("pt-BR", options);
+  };
+
+  const saveToLocalStorage = (article) => {
+    const savedArticles =
+      JSON.parse(localStorage.getItem("savedArticles")) || [];
+    if (!savedArticles.some((saved) => saved.url === article.url)) {
+      savedArticles.push(article);
+      localStorage.setItem("savedArticles", JSON.stringify(savedArticles));
+    }
+  };
+
+  const removeFromLocalStorage = (article) => {
+    let savedArticles = JSON.parse(localStorage.getItem("savedArticles")) || [];
+    savedArticles = savedArticles.filter((saved) => saved.url !== article.url);
+    localStorage.setItem("savedArticles", JSON.stringify(savedArticles));
+  };
+
+  let articlesFormated;
+
+  if (props.onlySaved) {
+    articlesFormated = savedArticles;
+  } else {
+    articlesFormated = articles;
   };
 
   return (
-    <ul className="card"> 
-     {articles.slice(0, displayCount).map((article, index) => (
-      <li className="card__container" key={index}>
-        <div className="card__itens">
-         { article.urlToImage && <img
-            className="card__image"
-            src={article.urlToImage}
-            alt={article.title}
-          />}
-          {isHovered && (
-            <span className="card__span">Sign in to save articles</span>
-          )}
-          {loggedIn ? (
-            <button
-              className={`card__button  ${classSavedNews}`}
-              onClick={handleSubmitSave}
-            ></button>
-          ) : (
-            <button
-              className="card__button card__button_icon"
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-            ></button>
-          )}
-        </div>
-        <div className="card__descriptions">
-          <p className="card__date">
-            {article.publishedAt}
-          </p>
-          <h2 className="card__title">
-           {article.title}
-          </h2>
-          <p className="card__subheading">
-           {article.description}
-          </p>
-          <p className="card__author">treehugger</p>
-        </div>
-      </li>))}
+    <ul className="card">
+      {articlesFormated
+        .slice(0, displayCount)
+        .filter((article) => !article.title.includes("[Removed]"))
+        .map((article, index) => (
+          <li className="card__container" key={index}>
+            <div className="card__itens">
+              {article.urlToImage && (
+                <img
+                  className="card__image"
+                  src={article.urlToImage}
+                  alt={article.title}
+                />
+              )}
 
+              {isSavedNewsPage && (
+                <span className="card__span_query">{query}</span>
+              )}
 
-     {/* <li className="card__container">
-        <div className="card__itens">
-          <img
-            className="card__image"
-            src={cardImage}
-            alt="Search-related background image"
-          />
-          {isHovered && (
-            <span className="card__span">Sign in to save articles</span>
-          )}
-          {loggedIn ? (
-            <button
-              className={`card__button  ${classSavedNews}`}
-              onClick={handleSubmitSave}
-            ></button>
-          ) : (
-            <button
-              className="card__button card__button_icon"
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-            ></button>
-          )}
-        </div>
-        <div className="card__descriptions">
-          <p className="card__date" itemType="Date">
-            4 de novembro de 2020
-          </p>
-          <h2 className="card__title">
-            Todo mundo precisa de um 'Lugar Especial para Sentar" especial na
-            natureza
-          </h2>
-          <p className="card__subheading">
-            Desde que li o influente livro de Richard Louv, "O Último Filho na
-            Floresta", a ideia de ter um "lugar para sentar" especial me pegou
-            de jeito. This advice, which Louv attributes to natureza...
-          </p>
-          <p className="card__author">treehugger</p>
-        </div>
-      </li>
-      <li className="card__container">
-        <div className="card__itens">
-          <img
-            className="card__image"
-            src={cardImage}
-            alt="Search-related background image"
-          />
-          {isHovered && (
-            <span className="card__span">Sign in to save articles</span>
-          )}
-          {loggedIn ? (
-            <button
-              className={`card__button  ${classSavedNews}`}
-              onClick={handleSubmitSave}
-            ></button>
-          ) : (
-            <button
-              className="card__button card__button_icon"
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-            ></button>
-          )}
-        </div>
-        <div className="card__descriptions">
-          <p className="card__date" itemType="Date">
-            4 de novembro de 2020
-          </p>
-          <h2 className="card__title">
-            Todo mundo precisa de um 'Lugar Especial para Sentar" especial na
-            natureza
-          </h2>
-          <p className="card__subheading">
-            Desde que li o influente livro de Richard Louv, "O Último Filho na
-            Floresta", a ideia de ter um "lugar para sentar" especial me pegou
-            de jeito. This advice, which Louv attributes to natureza...
-          </p>
-          <p className="card__author">treehugger</p>
-        </div>
-      </li>*/}
+              {targetCard.isHovered &&
+                targetCard.articleUrl === article.url && (
+                  <span className="card__span">
+                    {isSavedNewsPage
+                      ? "Remove from saved"
+                      : "Sign in to save articles"}
+                  </span>
+                )}
+
+              {loggedIn ? (
+                savedArticles.length > 0 && savedStatus[article.url] ? (
+                  <button
+                    className={`card__button  ${
+                      iconSaved.articleUrl === !article.url &&
+                      !iconSaved.isSaved
+                        ? ""
+                        : "card__button_saved"
+                    }`}
+                    onClick={() => handleRemove(article)}
+                  ></button>
+                ) : (
+                  <button
+                    className={`card__button  ${
+                      iconSaved.articleUrl === !article.url && iconSaved.isSaved
+                        ? "card__button_saved"
+                        : ""
+                    }`}
+                    onClick={() => {
+                      saveToLocalStorage(article);
+                      handleSave(article);
+                    }}
+                  ></button>
+                )
+              ) : (
+                <button
+                  className="card__button card__button_icon"
+                  onMouseEnter={() => handleMouseEnter(article)}
+                  onMouseLeave={handleMouseLeave}
+                ></button>
+              )}
+              {isSavedNewsPage && (
+                <button
+                  className="card__button card__button_trash"
+                  onMouseEnter={() => {
+                    removeFromLocalStorage(article);
+                    handleMouseEnter(article);
+                  }}
+                  onMouseLeave={handleMouseLeave}
+                  onClick={() => handleRemove(article)}
+                ></button>
+              )}
+            </div>
+
+            <div className="card__descriptions">
+              <p className="card__date">{formatDate(article.publishedAt)}</p>
+              <h2 className="card__title">{article.title}</h2>
+              <p className="card__subheading">{article.description}</p>
+              <p className="card__author">
+                {article.source.name.toUpperCase()}
+              </p>
+            </div>
+          </li>
+        ))}
     </ul>
   );
 }

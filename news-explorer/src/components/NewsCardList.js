@@ -1,7 +1,8 @@
 import { useContext } from "react";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import NewsCard from "./NewsCard";
 import Preloader from "./Preloader";
-import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import ResultNotFound from "./ResultNotFound";
 
 function NewsCardList() {
   const { articles, error, loading, handleShowMore } =
@@ -10,11 +11,11 @@ function NewsCardList() {
   return (
     <section className="card-list">
       {loading && <Preloader />}
-      {error && !loading && <div className="error-message">{error}</div>}
+      {error && !loading && <ResultNotFound />}
       <>
         <h2 className="card-list__title">Procurar resultados</h2>
         <div className="card-list__cards">
-          {articles.length > 0 && !loading && !error ? <NewsCard /> : ""}
+          {articles.length > 0 && !loading && !error ? <NewsCard onlySaved={false}  /> : ""}
         </div>
 
         <button

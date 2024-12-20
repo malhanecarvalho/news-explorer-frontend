@@ -1,0 +1,32 @@
+.result {
+    max-width: 1440px;
+    height: 282px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    background: rgba(245, 246, 247, 1);
+  }
+
+  .result__title {
+    font-family: roboto-slab;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 30px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    margin-bottom: 0;
+  }
+
+  .result__text {
+    max-width: 356px;
+    width: 100%;
+    font-family: roboto;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    color: #B6BCBF;
+  }

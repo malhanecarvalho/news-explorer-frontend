@@ -12,3 +12,5 @@
 @import url(./blocks/NewsCardList.css);
 @import url(./blocks/savedNews.css);
 @import url(./blocks/SavedNewsHeader.css);
+@import url(./blocks/ResultNotFound.css);
+@import url(./blocks/UnsavedCards.css);

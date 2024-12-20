@@ -1,10 +1,15 @@
 import React, { useState, createContext, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { fetchNews } from "../utils/NewsExplorerApi";
 export const CurrentUserContext = createContext();
 
 export const CurrentUserProvider = ({ children }) => {
+  const location = useLocation();
 
-  const [loggedIn, setLoggedIn] = useState(false);
+  const isSignupPage = location.pathname === "/";
+  const isSavedNewsPage = location.pathname === "/saved-news";
+
+  const [loggedIn, setLoggedIn] = useState(true);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isPopupSignupOpen, setIsPopupSignupOpen] = useState(false);
   const [title, setTitle] = useState("Entrar");
@@ -14,6 +19,24 @@ export const CurrentUserProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [displayCount, setDisplayCount] = useState(3);
+  const [searchResults, setSearchResults] = useState(false);
+  const [notFoundResults, setNotFoundResults] = useState(false);
+  const [savedArticles, setSavedArticles] = useState([]);
+  const [savedStatus, setSavedStatus] = useState({});
+  const [savedQuerys, setSavedQuerys] = useState([]);
+  const [iconSaved, setIconSaved] = useState({
+    articleUrl: null,
+    isSaved: false,
+  });
+
+
+
+  useEffect(() =>{
+    let savedArticles = JSON.parse(localStorage.getItem("savedArticles")) || [];
+    setSavedArticles(savedArticles);
+    let savedQuery = JSON.parse(localStorage.getItem("query")) || [];
+    setSavedQuerys(savedQuery);
+  }, [])
 
   function onPopupOpen() {
     setIsPopupOpen(true);
@@ -27,7 +50,7 @@ export const CurrentUserProvider = ({ children }) => {
   useEffect(() => {
     const storedArticles = localStorage.getItem("articles");
     if (storedArticles) {
-      setArticles(JSON.parse(storedArticles)); 
+      setArticles(JSON.parse(storedArticles));
     }
   }, []);
 
@@ -45,12 +68,26 @@ export const CurrentUserProvider = ({ children }) => {
       return;
     }
 
+   
+
+
+      if (!savedQuerys.some((querySaved) => querySaved === query)) {
+        const querysFormated = [...savedQuerys, query]
+        setSavedQuerys(querysFormated);
+        console.log(querysFormated)
+        localStorage.setItem("query", JSON.stringify(querysFormated));
+      }
+
+    
     setLoading(true);
     setError("");
+    setSearchResults(true);
+
     try {
       const news = await fetchNews(query);
       if (news.length === 0) {
         setError("Nada encontrado");
+        setNotFoundResults(true);
       } else {
         setArticles(news);
       }
@@ -65,6 +102,38 @@ export const CurrentUserProvider = ({ children }) => {
 
   const handleShowMore = () => {
     setDisplayCount(displayCount + 3);
+  };
+
+  const handleSave = (article) => {
+    setIconSaved({
+      articleUrl: article.url,
+      isSaved: true,
+    });
+    if (!savedArticles.some((saved) => saved.url === article.url)) {
+      setSavedArticles([...savedArticles, article]);
+      setSavedStatus((prevState) => ({
+        ...prevState,
+        [article.url]: true,
+      }));
+    }
+  };
+
+  const handleRemove = (article) => {
+    setIconSaved({
+      articleUrl: null,
+      isSaved: false,
+    });
+    setSavedArticles(
+      savedArticles.filter((saved) => saved.url !== article.url)
+    );
+    setSavedStatus((prevState) => ({
+      ...prevState,
+      [article.url]: false,
+    }));
+  };
+
+  const getButtonLabel = (article) => {
+    return savedStatus[article.url] ? "Remove from saved" : "Save";
   };
 
   return (
@@ -90,6 +159,17 @@ export const CurrentUserProvider = ({ children }) => {
         displayCount,
         handleShowMore,
         handleSearch,
+        savedArticles,
+        setSavedArticles,
+        searchResults,
+        notFoundResults,
+        handleSave,
+        handleRemove,
+        iconSaved,
+        savedStatus,
+        isSavedNewsPage,
+        isSignupPage,
+        savedQuerys
       }}
     >
       {children}

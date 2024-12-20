@@ -67,8 +67,34 @@
     color: #000;
 }
 
+.card__span_query{
+    max-width: 182px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 13px 18px;
+    border-radius: 10px;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 14.06px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    background-color: #fff;
+    color: #000;
+}
+
 .card__button_saved {
     background-image: url(../images/bookmark_active.png);
+}
+
+.card__button_trash {
+    background-image: url(../images/trash_icon.png);
+}
+
+.card__button_trash:hover {
+    background-image: url(../images/trash_icon_active.png);
 }
 
 .card__descriptions {
