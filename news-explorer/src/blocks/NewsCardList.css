@@ -53,3 +53,23 @@
     color: #1a1b22;
     padding: 20px 0;
 }
+
+
+@media (min-width: 320px) and (max-width: 600px) {
+  .card-list__title {
+        font-size: 30px;
+        line-height: 34px;
+        margin: 45px 0 40px;
+    }
+
+    .card-list__button{
+        margin: 45px auto;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 1024px) {
+    .card-list__title {
+          margin: 85px 0 70px 25px;
+          text-align: left;
+      }
+  }

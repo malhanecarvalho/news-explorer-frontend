@@ -38,3 +38,14 @@
     line-height: 24px;
     color: #1a1b22;
 }
+
+@media (min-width: 320px) and (max-width: 544px) {
+    .saved-news__container{
+        padding: 25px 35px 35px;
+     }
+
+     .saved-news__title{
+        font-size: 30px;
+        line-height: 34px;
+    }   
+}

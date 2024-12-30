@@ -23,7 +23,7 @@
     width: 100%;
 }
 
-.search_title {
+.search__title {
     max-width: 702px;
     font-family: roboto-slab;
     font-weight: 400;
@@ -88,9 +88,116 @@
     font-size: 18px;
     line-height: 24px;
     color: #fff;
-    padding: 18px 40px;
+    padding: 20px 40px;
 }
 
 .error-message{
     color: red;
+}
+
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .search__container {
+       max-width: 452px;
+       padding: 40px 0 75px;
+    }
+
+    .search__description {
+        max-width: 452px;
+    }
+
+    .search__title {
+        max-width: 452px;
+        font-size: 36px;
+        line-height: 40px;
+    }
+
+    .search__subheading {
+        max-width: 452px;
+        padding: 0 0 45px;
+    }
+
+    .search__form {
+        max-width: 452px;
+    }
+
+    .search__button_text {
+        padding: 20px 40px;
+    }
+}
+
+@media (min-width: 545px) and (max-width: 767px) {
+    .search__container {
+       max-width: 452px;
+       padding: 40px 0 75px;
+    }
+
+    .search__description {
+        max-width: 452px;
+    }
+
+    .search__title {
+        max-width: 452px;
+        font-size: 36px;
+        line-height: 40px;
+    }
+
+    .search__subheading {
+        max-width: 452px;
+        padding: 0 0 45px;
+    }
+
+    .search__form {
+        max-width: 452px;
+    }
+
+    .search__button_text {
+        padding: 20px 40px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 544px) {
+    .search {
+        width: 100%;
+        background-position: center;
+    }
+
+    .search__container {
+        align-items: center;
+        row-gap: 20px;
+        padding: 40px 0px;
+    }
+
+    .search__form{
+        display: contents;
+    }
+
+    .search__input{
+        max-width: 180px;
+        padding: 18px 60px 18px 18px;
+        margin-right: 0;
+    }
+
+    .search__description {
+        max-width: 288px;
+        padding: 0;
+    }
+
+    .search__title {
+        margin: 0;
+        font-size: 36px;
+        line-height: 40px;
+    }
+
+    .search__subheading {
+       padding: 0;
+    }
+
+    .search__button {
+        max-width: 260px;
+    }
+
+    .search__button_text {
+        padding: 18px 95px;
+    }
 }

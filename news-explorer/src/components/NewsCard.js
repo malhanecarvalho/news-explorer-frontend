@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import { CurrentUserContext } from "../contexts/NewsExplorerContext";
 
 function NewsCard(props) {
   const {
@@ -13,8 +13,15 @@ function NewsCard(props) {
     iconSaved,
     savedStatus,
     isSavedNewsPage,
-    savedQuerys,
   } = useContext(CurrentUserContext);
+
+  const [localSavedArticles, setLocalSavedArticles] = useState(savedArticles);
+
+  useEffect(() => {
+    const updatedSavedArticles =
+      JSON.parse(localStorage.getItem("savedArticles")) || [];
+    setLocalSavedArticles(updatedSavedArticles);
+  }, [savedArticles]);
 
   const [targetCard, setTargetCard] = useState({
     articleUrl: null,
@@ -45,9 +52,16 @@ function NewsCard(props) {
   const saveToLocalStorage = (article) => {
     const savedArticles =
       JSON.parse(localStorage.getItem("savedArticles")) || [];
+
+    const updatedArticle = {
+      ...article,
+      query: query,
+    };
+
     if (!savedArticles.some((saved) => saved.url === article.url)) {
-      savedArticles.push(article);
+      savedArticles.push(updatedArticle);
       localStorage.setItem("savedArticles", JSON.stringify(savedArticles));
+      setLocalSavedArticles(savedArticles);
     }
   };
 
@@ -60,10 +74,10 @@ function NewsCard(props) {
   let articlesFormated;
 
   if (props.onlySaved) {
-    articlesFormated = savedArticles;
+    articlesFormated = localSavedArticles;
   } else {
     articlesFormated = articles;
-  };
+  }
 
   return (
     <ul className="card">
@@ -82,7 +96,7 @@ function NewsCard(props) {
               )}
 
               {isSavedNewsPage && (
-                <span className="card__span_query">{query}</span>
+                <span className="card__span_query">{article.query}</span>
               )}
 
               {targetCard.isHovered &&

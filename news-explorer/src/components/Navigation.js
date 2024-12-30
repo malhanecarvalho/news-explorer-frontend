@@ -1,15 +1,20 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
-import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import { CurrentUserContext } from "../contexts/NewsExplorerContext";
 import strokeIcon from "../images/white-stroke_icon.png";
 import blackStrokeIcon from "../images/black-stroke_icon.png";
 import loggoutIcon from "../images/logout_icon.png";
 import loggoutIconWhite from "../images/logout_icon-white.png";
 
 function Navigation() {
-    
-  const { onPopupOpen, loggedIn, isSignupPage, isSavedNewsPage } =
-    useContext(CurrentUserContext);
+  const {
+    onPopupOpen,
+    loggedIn,
+    isSignupPage,
+    isSavedNewsPage,
+    onMobileOpen,
+    handleLoggout,
+  } = useContext(CurrentUserContext);
 
   const RenderItensNavigation = () => {
     if (isSignupPage) {
@@ -32,6 +37,10 @@ function Navigation() {
             </NavLink>
             <img src={strokeIcon} alt="Icon stroke white" />
           </div>
+          <button
+            className="navigation__menu navigation__menu_white"
+            onClick={onMobileOpen}
+          ></button>
           {loggedIn && (
             <NavLink
               className="navigation__item navigation__text"
@@ -48,6 +57,7 @@ function Navigation() {
                 className="navigation__button_close"
                 src={loggoutIconWhite}
                 alt="Icon loggout"
+                onClick={handleLoggout}
               />
             </button>
           ) : (
@@ -72,6 +82,10 @@ function Navigation() {
           >
             NewsExplorer
           </NavLink>
+          <button
+            className="navigation__menu navigation__menu_black"
+            onClick={onMobileOpen}
+          ></button>
           <NavLink
             className="navigation__item navigation__text_loggedIn"
             activeClassName="navigation__item_active"
@@ -95,6 +109,7 @@ function Navigation() {
               className="navigation__button_close"
               src={loggoutIcon}
               alt="Icon loggout"
+              onClick={handleLoggout}
             />
           </button>
         </>

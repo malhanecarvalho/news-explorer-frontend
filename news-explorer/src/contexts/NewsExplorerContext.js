@@ -9,9 +9,10 @@ export const CurrentUserProvider = ({ children }) => {
   const isSignupPage = location.pathname === "/";
   const isSavedNewsPage = location.pathname === "/saved-news";
 
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isPopupSignupOpen, setIsPopupSignupOpen] = useState(false);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [title, setTitle] = useState("Entrar");
   const [titleNavlink, setTitleNavlink] = useState("Inscreva-se");
   const [query, setQuery] = useState("");
@@ -29,14 +30,20 @@ export const CurrentUserProvider = ({ children }) => {
     isSaved: false,
   });
 
-
-
-  useEffect(() =>{
+  useEffect(() => {
     let savedArticles = JSON.parse(localStorage.getItem("savedArticles")) || [];
     setSavedArticles(savedArticles);
     let savedQuery = JSON.parse(localStorage.getItem("query")) || [];
     setSavedQuerys(savedQuery);
-  }, [])
+  }, []);
+
+  function handleLoggin() {
+    setLoggedIn(true);
+  }
+
+  function handleLoggout() {
+    setLoggedIn(false);
+  }
 
   function onPopupOpen() {
     setIsPopupOpen(true);
@@ -45,6 +52,11 @@ export const CurrentUserProvider = ({ children }) => {
   function onPopupClose() {
     setIsPopupOpen(false);
     setIsPopupSignupOpen(false);
+    setIsMobileOpen(false);
+  }
+
+  function onMobileOpen() {
+    setIsMobileOpen(true);
   }
 
   useEffect(() => {
@@ -68,17 +80,12 @@ export const CurrentUserProvider = ({ children }) => {
       return;
     }
 
-   
+    if (!savedQuerys.some((querySaved) => querySaved === query)) {
+      const querysFormated = [...savedQuerys, query];
+      setSavedQuerys(querysFormated);
+      localStorage.setItem("query", JSON.stringify(querysFormated));
+    }
 
-
-      if (!savedQuerys.some((querySaved) => querySaved === query)) {
-        const querysFormated = [...savedQuerys, query]
-        setSavedQuerys(querysFormated);
-        console.log(querysFormated)
-        localStorage.setItem("query", JSON.stringify(querysFormated));
-      }
-
-    
     setLoading(true);
     setError("");
     setSearchResults(true);
@@ -132,10 +139,6 @@ export const CurrentUserProvider = ({ children }) => {
     }));
   };
 
-  const getButtonLabel = (article) => {
-    return savedStatus[article.url] ? "Remove from saved" : "Save";
-  };
-
   return (
     <CurrentUserContext.Provider
       value={{
@@ -157,6 +160,7 @@ export const CurrentUserProvider = ({ children }) => {
         articles,
         error,
         displayCount,
+        setDisplayCount,
         handleShowMore,
         handleSearch,
         savedArticles,
@@ -169,7 +173,11 @@ export const CurrentUserProvider = ({ children }) => {
         savedStatus,
         isSavedNewsPage,
         isSignupPage,
-        savedQuerys
+        savedQuerys,
+        handleLoggin,
+        handleLoggout,
+        isMobileOpen,
+        onMobileOpen,
       }}
     >
       {children}

@@ -4,10 +4,9 @@ import Header from "./Header";
 import Main from './Main';
 import Footer from './Footer';
 import SavedNewsHeader from './SavedNewsHeader';
-import NewsCardList from "./NewsCardList";
 import ProtectedRoute from './ProtectedRoute';
-import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import SavedNews from './savedNews';
+import { CurrentUserContext } from '../contexts/NewsExplorerContext';
 
 function App() {
   const { loggedIn } = useContext(CurrentUserContext)

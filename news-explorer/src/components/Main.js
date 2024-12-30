@@ -4,7 +4,7 @@ import About from "./About";
 import Popup from "./ModalWithForm";
 import ResultNotFound from "./ResultNotFound";
 import { useContext } from "react";
-import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import { CurrentUserContext } from "../contexts/NewsExplorerContext";
 
 function Main() {
   const {searchResults, notFoundResults} = useContext(CurrentUserContext);

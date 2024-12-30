@@ -1,140 +1,148 @@
 .card {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    column-gap: 15px;
-    row-gap: 15px;
-    margin: 0;
-    padding: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  column-gap: 15px;
+  row-gap: 15px;
+  margin: 0;
+  padding: 0;
 }
 
 .card__container {
-    max-width: 400px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    border-radius: 16px;
-    background-color: #fff;
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  background-color: #fff;
 }
 
 .card__itens {
-    max-width: 400px;
-    width: 100%;
-    position: relative;
+  max-width: 400px;
+  width: 100%;
+  position: relative;
 }
 
 .card__image {
-    width: 100%;
-    height: 272px;
-    border-top-left-radius: 16px;
-    border-top-right-radius: 16px;
+  width: 100%;
+  height: 272px;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
 }
 
 .card__button {
-    width: 40px;
-    height: 40px;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    padding-top: 5px;
-    background-color: #fff;
-    border-radius: 8px;
-    border: unset;
-    background-image: url(../images/bookmark_normal.png);
-    background-position: center;
-    background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding-top: 5px;
+  background-color: #fff;
+  border-radius: 8px;
+  border: unset;
+  background-image: url(../images/bookmark_normal.png);
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.card__button_icon:hover{
-    background-image: url(../images/bookmark_hover.png);
+.card__button_icon:hover {
+  background-image: url(../images/bookmark_hover.png);
 }
 
 .card__span {
-    max-width: 182px;
-    position: absolute;
-    top: 20px;
-    right: 65px;
-    padding: 13px 18px;
-    border-radius: 10px;
-    font-family: Roboto;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 14.06px;
-    text-align: center;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
-    background-color: #fff;
-    color: #000;
+  max-width: 182px;
+  position: absolute;
+  top: 20px;
+  right: 65px;
+  padding: 13px 18px;
+  border-radius: 10px;
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14.06px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  background-color: #fff;
+  color: #000;
 }
 
-.card__span_query{
-    max-width: 182px;
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    padding: 13px 18px;
-    border-radius: 10px;
-    font-family: Roboto;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 14.06px;
-    text-align: center;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
-    background-color: #fff;
-    color: #000;
+.card__span_query {
+  max-width: 182px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 13px 18px;
+  border-radius: 10px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 14.06px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  background-color: #fff;
+  color: #000;
 }
 
 .card__button_saved {
-    background-image: url(../images/bookmark_active.png);
+  background-image: url(../images/bookmark_active.png);
 }
 
 .card__button_trash {
-    background-image: url(../images/trash_icon.png);
+  background-image: url(../images/trash_icon.png);
 }
 
 .card__button_trash:hover {
-    background-image: url(../images/trash_icon_active.png);
+  background-image: url(../images/trash_icon_active.png);
 }
 
 .card__descriptions {
-    max-width: 400px;
-    padding: 0 20px;
+  max-width: 400px;
+  padding: 0 20px;
 }
 
 .card__date {
-    font-family: roboto;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 24px;
-    color: #b6bcbf;
+  font-family: roboto;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #b6bcbf;
 }
 
 .card__title {
-    max-width: 352px;
-    width: 100%;
-    font-family: roboto-slab;
-    font-weight: 400;
-    font-size: 26px;
-    line-height: 30px;
-    color: #1a1b22;
+  max-width: 352px;
+  width: 100%;
+  font-family: roboto-slab;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 30px;
+  color: #1a1b22;
 }
 
 .card__subheading {
-    max-width: 352px;
-    width: 100%;
-    font-family: roboto;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 22px;
-    color: #1a1b22;
+  max-width: 352px;
+  width: 100%;
+  font-family: roboto;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #1a1b22;
 }
 
 .card__author {
-    font-family: roboto-slab;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 20px;
-    letter-spacing: 0.4px;
-    color: #b6bcbf;
+  font-family: roboto-slab;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.4px;
+  color: #b6bcbf;
+}
+
+@media (min-width: 600px) and (max-width: 835px) {
+  .card {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
 }

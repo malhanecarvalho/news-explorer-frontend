@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import { CurrentUserContext } from "../contexts/NewsExplorerContext";
 import NewsCard from "./NewsCard";
 import Preloader from "./Preloader";
 import ResultNotFound from "./ResultNotFound";
@@ -15,7 +15,11 @@ function NewsCardList() {
       <>
         <h2 className="card-list__title">Procurar resultados</h2>
         <div className="card-list__cards">
-          {articles.length > 0 && !loading && !error ? <NewsCard onlySaved={false}  /> : ""}
+          {articles.length > 0 && !loading && !error ? (
+            <NewsCard onlySaved={false} />
+          ) : (
+            ""
+          )}
         </div>
 
         <button

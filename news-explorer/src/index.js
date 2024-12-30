@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import './index.css';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
-import { CurrentUserProvider } from './contexts/CurrentUserContext';
+import { CurrentUserProvider } from './contexts/NewsExplorerContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

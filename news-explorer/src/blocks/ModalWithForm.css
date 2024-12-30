@@ -161,4 +161,14 @@ input {
         row-gap: 10px;
         padding: 8%;
     }
+
+    .modal__label_span{
+        font-size: 10px;
+    }
+
+    .modal__icon{
+        max-width: 24px;
+        max-height: 24px;
+        right: -8px;
+    }
 }

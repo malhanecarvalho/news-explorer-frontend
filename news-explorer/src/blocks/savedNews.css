@@ -4,3 +4,9 @@
     background-color: #f5f6f7;
     padding: 60px 0;
 }
+
+.saved-cards__container{
+    display: flex;
+    justify-content: center;
+    padding: 0 10px;
+}

@@ -68,6 +68,38 @@
     }
 }
 
+@media (min-width: 545px) and (max-width: 767px) {
+    .about {
+        width: 100%;
+    }
+
+    .about__container {
+        padding: 50px 0 60px;
+        column-gap: 10px;
+    }
+
+    .about__description {
+        padding: 10px;
+    }
+
+    .about__title {
+        width: 288px;
+        margin: 0;
+        font-size: 30px;
+    }
+
+    .about__subheading {
+        font-size: 14px;
+    }
+
+    .about__image {
+        width: 210px;
+        height: 210px;
+        margin-left: 10px;
+        margin-top: 40px;
+    }
+}
+
 @media (min-width: 320px) and (max-width: 544px) {
     .about {
         width: 100%;
@@ -101,3 +133,4 @@
         height: 272px;
     }
 }
+

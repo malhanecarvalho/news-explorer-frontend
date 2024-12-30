@@ -1,14 +1,16 @@
 import React, { useContext } from "react";
-import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import { CurrentUserContext } from "../contexts/NewsExplorerContext";
 import NewsCard from "./NewsCard";
 import UnsavedCards from "./UnsavedCards";
 
 const SavedNews = () => {
-  const { savedArticles } = useContext(CurrentUserContext);
+  const { savedArticles, displayCount } = useContext(CurrentUserContext);
 
   return (
     <section className="saved-cards">
-      {savedArticles.length > 0 ? < NewsCard onlySaved={true} /> : <UnsavedCards/>}
+      <div className="saved-cards__container">
+      {savedArticles.length > 0 ? < NewsCard onlySaved={true} displayCount={displayCount} /> : <UnsavedCards/>}
+      </div>
     </section>
   );
 };

@@ -6,4 +6,12 @@
     border-bottom: 1px solid #c4c4c4;
 }
 
+@media (min-width: 320px) and (max-width: 544px) {
+    .header {
+        width: 100%;
+        padding: 0;
+    }
+}
+
+
 

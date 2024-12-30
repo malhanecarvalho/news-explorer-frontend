@@ -3,6 +3,7 @@
     width: 100%;
     display: flex;
     background-color: #fff;
+    justify-content: center;
 }
 
 .footer__container {
@@ -60,14 +61,27 @@
     max-height: 24px;
 }
 
+@media (min-width: 545px) and (max-width: 768px) {
+
+    .footer__container {    
+        padding: 13px 15px;   
+    }
+
+    .footer__description {
+        font-size: 13px;
+    }
+
+    .footer__text {
+        font-size: 14px;
+    }
+}
+
 @media (min-width: 320px) and (max-width: 544px) {
     .footer {
         width: 100%;
     }
 
     .footer__container {
-        max-width: 500px;
-        width: 100%;
         flex-flow: wrap-reverse;
         align-items: normal;
         padding: 13px 15px;
@@ -76,6 +90,8 @@
 
     .footer__description {
         padding-top: 25px;
+        width: 100%;
+        font-size: 14px;
     }
 
     .footer__link {
