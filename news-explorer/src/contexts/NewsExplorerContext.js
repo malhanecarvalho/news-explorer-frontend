@@ -1,5 +1,5 @@
 import React, { useState, createContext, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import { fetchNews } from "../utils/NewsExplorerApi";
 export const CurrentUserContext = createContext();
 
@@ -8,13 +8,15 @@ export const CurrentUserProvider = ({ children }) => {
 
   const isSignupPage = location.pathname === "/";
   const isSavedNewsPage = location.pathname === "/saved-news";
-
+  
+  const history = useHistory();
   const [loggedIn, setLoggedIn] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [isPopupSignupOpen, setIsPopupSignupOpen] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [title, setTitle] = useState("Entrar");
   const [titleNavlink, setTitleNavlink] = useState("Inscreva-se");
+  const [userName, setUserName] = useState("");
   const [query, setQuery] = useState("");
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -178,6 +180,9 @@ export const CurrentUserProvider = ({ children }) => {
         handleLoggout,
         isMobileOpen,
         onMobileOpen,
+        history,
+        userName,
+        setUserName
       }}
     >
       {children}

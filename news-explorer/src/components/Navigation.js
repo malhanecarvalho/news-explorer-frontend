@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { CurrentUserContext } from "../contexts/NewsExplorerContext";
 import strokeIcon from "../images/white-stroke_icon.png";
@@ -14,7 +14,27 @@ function Navigation() {
     isSavedNewsPage,
     onMobileOpen,
     handleLoggout,
+    history,
   } = useContext(CurrentUserContext);
+
+  const [userName, setUserName] = useState("");
+
+  useEffect(() => {
+    const savedUserName = localStorage.getItem("username");
+    if (savedUserName) {
+      setUserName(savedUserName);
+    }
+  }, []);
+
+  function signOut(evt) {
+    evt.preventDefault();
+    handleLoggout();
+    localStorage.removeItem("Triple10");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("username");
+    setUserName("");
+    history.push("/");
+  }
 
   const RenderItensNavigation = () => {
     if (isSignupPage) {
@@ -52,12 +72,12 @@ function Navigation() {
           )}
           {loggedIn ? (
             <button className="navigation__item navigation__button navigation__button_text">
-              Elise
+              {userName}
               <img
                 className="navigation__button_close"
                 src={loggoutIconWhite}
                 alt="Icon loggout"
-                onClick={handleLoggout}
+                onClick={signOut}
               />
             </button>
           ) : (
@@ -104,12 +124,12 @@ function Navigation() {
             <img src={blackStrokeIcon} alt="Icon stroke black" />
           </div>
           <button className="navigation__item navigation__button_loggedIn navigation__button_text_loggedIn">
-            Elise
+            {userName}
             <img
               className="navigation__button_close"
               src={loggoutIcon}
               alt="Icon loggout"
-              onClick={handleLoggout}
+              onClick={signOut}
             />
           </button>
         </>

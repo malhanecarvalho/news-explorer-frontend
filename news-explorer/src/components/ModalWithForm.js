@@ -2,28 +2,32 @@ import { useState, useEffect, useContext } from "react";
 import { CurrentUserContext } from "../contexts/NewsExplorerContext";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import closeIcon from "../images/close_icon.png";
+import * as auth from "../utils/auth";
 
 function Popup() {
-    const {
-        isPopupOpen,
-        onPopupClose,
-        title,
-        setTitle,
-        titleNavlink,
-        setTitleNavlink,
-        isPopupSignupOpen,
-        handleLoggin
-      } = useContext(CurrentUserContext);
+  const {
+    isPopupOpen,
+    onPopupClose,
+    title,
+    setTitle,
+    titleNavlink,
+    setTitleNavlink,
+    isPopupSignupOpen,
+    handleLoggin,
+    userName,
+    setUserName,
+  } = useContext(CurrentUserContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [userName, setUserName] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [errorMessagePassword, setErrorMessagePassword] = useState("");
   const [errorMessageUserName, setErrorMessageUserName] = useState("");
   const [input, setInput] = useState(false);
   const [disabledButtonSubmit, setDisabledButtonSubmit] = useState(true);
- 
+  const [togglePopup, setTogglePopup] = useState(false);
+  const [buttonText, setButtonText] = useState("Entrar");
+
   const classPopupOpen = isPopupOpen ? "modal__open" : "";
   const classPopupSignupOpen = isPopupSignupOpen ? "modal__open" : "";
   const classButtonSubmit = disabledButtonSubmit
@@ -97,19 +101,65 @@ function Popup() {
     disabledBtn(email, password, value);
   };
 
-  const handleSubmit = (evt) => {
+  console.log(userName);
+
+  const handleSignup = async () => {
+    try {
+      if (password && email) {
+        const response = await auth.register({ email, password });
+        if (!response.ok) {
+          throw new Error();
+        }
+        localStorage.setItem("username", userName);
+        window.location = "/";
+        //setTimeout(() => { onPopupOpen()}, 1000)
+      }
+    } catch (error) {
+      console.log("error register", error);
+    }
+  };
+
+  const handleSignin = async () => {
+    setTogglePopup(false);
+    try {
+      if (password && email) {
+        let response = await auth.login({ email, password });
+        if (!response.ok) {
+          return "Email ou senha inválidos";
+        }
+        const data = await response.json();
+        if (data.token) {
+          handleLoggin();
+          localStorage.setItem("Triple10", data.token);
+          localStorage.setItem("userId", data.userId);
+        }
+      }
+    } catch (error) {
+      console.log("error login", error);
+    }
+  };
+
+  const handleSubmit = async (evt) => {
     evt.preventDefault();
+
+    if (togglePopup) {
+      handleSignup();
+    } else {
+      handleSignin();
+    }
+
     setEmail("");
     setPassword("");
     setUserName("");
     setDisabledButtonSubmit(true);
     onPopupClose();
-    handleLoggin();
   };
 
   const popupSignup = () => {
+    setTogglePopup(true);
     setTitle("inscreva-se");
     setTitleNavlink("Entrar");
+    setButtonText("inscreva-se");
     setInput(true);
     setEmail("");
     setErrorMessage("");
@@ -171,6 +221,7 @@ function Popup() {
                 placeholder="Insira seu nome de usuário"
                 value={userName}
                 onChange={handleUpdateUserName}
+                maxLength={7}
                 required
               ></input>
               {errorMessageUserName && (
@@ -186,7 +237,7 @@ function Popup() {
             disabled={disabledButtonSubmit}
             onClick={handleSubmit}
           >
-            Entrar
+            {buttonText}
           </button>
           <NavLink
             className="modal_text modal__link"
