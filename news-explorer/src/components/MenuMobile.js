@@ -5,12 +5,8 @@ import closeIcon from "../images/close_icon.png";
 import loggoutIconWhite from "../images/logout_icon-white.png";
 
 function ResponseMenuNavigation() {
-  const {
-    onPopupClose,
-    loggedIn,
-    handleLoggout,
-    onPopupOpen,
-  } = useContext(CurrentUserContext);
+  const { onPopupClose, loggedIn, onPopupOpen, userName, signOut } =
+    useContext(CurrentUserContext);
 
   return (
     <section className="menu">
@@ -39,11 +35,11 @@ function ResponseMenuNavigation() {
 
           {loggedIn ? (
             <button className="menu__button menu__button_text">
-              Elise
+              {userName}
               <img
                 src={loggoutIconWhite}
                 alt="Icon loggout"
-                onClick={handleLoggout}
+                onClick={signOut}
               />
             </button>
           ) : (

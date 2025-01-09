@@ -10,7 +10,7 @@ import * as auth from "../utils/auth";
 import { CurrentUserContext } from '../contexts/NewsExplorerContext';
 
 function App() {
-  const { loggedIn, handleLoggin, handleLoggout, history } = useContext(CurrentUserContext)
+  const { loggedIn, handleLoggin, handleLoggout, history } = useContext(CurrentUserContext);
 
   useEffect(() => {
     handleCheckToken();

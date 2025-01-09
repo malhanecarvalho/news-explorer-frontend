@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { CurrentUserContext } from "../contexts/NewsExplorerContext";
 import strokeIcon from "../images/white-stroke_icon.png";
@@ -9,32 +9,13 @@ import loggoutIconWhite from "../images/logout_icon-white.png";
 function Navigation() {
   const {
     onPopupOpen,
+    userName,
     loggedIn,
     isSignupPage,
     isSavedNewsPage,
     onMobileOpen,
-    handleLoggout,
-    history,
+    signOut,
   } = useContext(CurrentUserContext);
-
-  const [userName, setUserName] = useState("");
-
-  useEffect(() => {
-    const savedUserName = localStorage.getItem("username");
-    if (savedUserName) {
-      setUserName(savedUserName);
-    }
-  }, []);
-
-  function signOut(evt) {
-    evt.preventDefault();
-    handleLoggout();
-    localStorage.removeItem("Triple10");
-    localStorage.removeItem("userId");
-    localStorage.removeItem("username");
-    setUserName("");
-    history.push("/");
-  }
 
   const RenderItensNavigation = () => {
     if (isSignupPage) {

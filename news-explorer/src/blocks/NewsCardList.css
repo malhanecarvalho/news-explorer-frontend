@@ -66,10 +66,3 @@
         margin: 45px auto;
     }
 }
-
-@media (min-width: 600px) and (max-width: 1024px) {
-    .card-list__title {
-          margin: 85px 0 70px 25px;
-          text-align: left;
-      }
-  }

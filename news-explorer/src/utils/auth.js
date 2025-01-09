@@ -1,13 +1,13 @@
 const AUTH_BASE_URL = "http://localhost:3000";
 
-export const register = async ({ email, password }) => {
+export const register = async ({ email, password, username }) => {
   return fetch(`${AUTH_BASE_URL}/signup`, {
     method: "POST",
     headers: {
       Accept: "Application/json",
       "Content-Type": "Application/json",
     },
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify({ email, password, username }),
   });
 };
 
