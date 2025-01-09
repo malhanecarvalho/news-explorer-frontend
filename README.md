@@ -4,6 +4,8 @@ Bem-vindo ao **News Explorer**! Este é um aplicativo Full-Stack projetado para 
 
 ---
 
+![ ](.news-explorer/src/images/news-explorer_image.png)
+
 ## 📋 Funcionalidades Principais
 
 - 🔍 **Pesquisa de Notícias**: Digite palavras-chave para encontrar artigos de notícias atualizados.
