@@ -4,7 +4,7 @@ Bem-vindo ao **News Explorer**! Este é um aplicativo Full-Stack projetado para 
 
 ---
 
-![ ](./src/images/news-explorer_image.png)
+![ ](https://github.com/malhanecarvalho/news-explorer-frontend/blob/stage-react-api/news-explorer/src/images/news-explorer_image.png)
 
 ## 📋 Funcionalidades Principais
 
