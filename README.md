@@ -4,7 +4,7 @@ Bem-vindo ao **News Explorer**! Este é um aplicativo Full-Stack projetado para 
 
 ---
 
-![ ](.news-explorer/src/images/news-explorer_image.png)
+![ ](./src/images/news-explorer_image.png)
 
 ## 📋 Funcionalidades Principais
 
