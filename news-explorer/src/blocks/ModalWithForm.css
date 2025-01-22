@@ -99,8 +99,6 @@ input {
 .modal__button {
     width: 360px;
     height: 64px;
-    gap: 0px;
-    opacity: 0px;
     border-radius: 100px;
     border: unset;
     background-color: #2F71E5;
