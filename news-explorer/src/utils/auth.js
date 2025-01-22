@@ -1,4 +1,4 @@
-const AUTH_BASE_URL = "http://localhost:3000";
+const AUTH_BASE_URL = "https://news-explorer-backend-xrwq.onrender.com";
 
 export const register = async ({ email, password, username }) => {
   return fetch(`${AUTH_BASE_URL}/signup`, {

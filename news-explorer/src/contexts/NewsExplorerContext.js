@@ -45,13 +45,19 @@ export const CurrentUserProvider = ({ children }) => {
     : "";
   const emailRegex = /\S+@\S+\.\S+/;
 
+  const getCurrentUser = () => {
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+    if (currentUser && currentUser.userName) {
+      return currentUser.userName;
+    }
+
+    return "";
+  };
+
   useEffect(() => {
-    const getCurrentUser = () => {
-      const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-      setUserName(currentUser.userName);
-      return currentUser ? currentUser.userName : "Nenhum usuário logado";
-    };
-    getCurrentUser();
+    const userName = getCurrentUser();
+    setUserName(userName);
   }, []);
 
   useEffect(() => {
@@ -263,7 +269,8 @@ export const CurrentUserProvider = ({ children }) => {
 
     setLoading(true);
     setError("");
-    setSearchResults(true);
+    setSearchResults(false);
+    setNotFoundResults(false);
 
     try {
       const news = await fetchNews(query);
@@ -272,6 +279,7 @@ export const CurrentUserProvider = ({ children }) => {
         setNotFoundResults(true);
       } else {
         setArticles(news);
+        setSearchResults(true);
       }
     } catch (err) {
       setError(
@@ -369,7 +377,7 @@ export const CurrentUserProvider = ({ children }) => {
         setIsModalSuccessOpen,
         onModalSuccessOpen,
         onPopupSignupOpen,
-        signOut
+        signOut,
       }}
     >
       {children}

@@ -1,4 +1,4 @@
-const BASE_URL = "https://newsapi.org";
+const BASE_URL_PROXY = "https://nomoreparties.co/news"
 const API_KEY = "40158ecab28942288d49ae59249d5a09";
 
 export const fetchNews = async (query) => {
@@ -7,7 +7,7 @@ export const fetchNews = async (query) => {
     fromDate.setDate(fromDate.getDate() - 7);
     const toDate = new Date().toISOString().split("T")[0];
 
-    const url = `${BASE_URL}/v2/everything?q=${query}&apiKey=${API_KEY}&from=${
+    const url = `${BASE_URL_PROXY}/v2/everything?q=${query}&apiKey=${API_KEY}&from=${
       fromDate.toISOString().split("T")[0]
     }&to=${toDate}&pageSize=100`;
 

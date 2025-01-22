@@ -3,22 +3,20 @@ import NewsCardList from "./NewsCardList";
 import About from "./About";
 import Register from "./ModalsWithForms/Register";
 import Login from "./ModalsWithForms/Login";
-import ResultNotFound from "./ResultNotFound";
 import { useContext } from "react";
 import { CurrentUserContext } from "../contexts/NewsExplorerContext";
 
 function Main() {
-  const { searchResults, notFoundResults } = useContext(CurrentUserContext);
+  const { searchResults } = useContext(CurrentUserContext);
   return (
     <>
       <SearchForm />
-      {searchResults &&
-        (notFoundResults ? <ResultNotFound /> : <NewsCardList />)}
+      {searchResults && <NewsCardList />}
       <About />
       <Login />
       <Register />
     </>
   );
-};
+}
 
 export default Main;
